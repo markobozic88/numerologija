@@ -19,7 +19,6 @@ public class TestNumerologija {
                 case 1:
                     System.out.println("Unesite datum rodjenja (dd.mm.gggg.):");
                     String dr = scanner.next();
-
                     Datum dt = Datum.stringToDatum(dr);
                     if (dt == null){
                         i--;

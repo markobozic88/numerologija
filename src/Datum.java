@@ -41,7 +41,7 @@ public class Datum {
         }
     }
     public static boolean ispravanDatum(int d, int m, int g){
-        return (d >= 1 && d <= daniMesec(m, g)) && (m >= 1 && m <= 12) && g > 1950;
+        return (d >= 1 && d <= daniMesec(m, g)) && (m >= 1 && m <= 12) && g > 1900;
     }
     public static Datum stringToDatum(String stringDatum){
         if (stringDatum.length() != 11){
@@ -52,7 +52,7 @@ public class Datum {
             System.out.println("Neispravno unet datum - neispravan format datuma");
             return null;
         }
-        int danDatum = 0; int mesecDatum = 0; int godinaDatum = 0;
+        int danDatum, mesecDatum, godinaDatum;
         try {
             danDatum = Integer.parseInt(stringDatum.substring(0, 2));
             mesecDatum = Integer.parseInt(stringDatum.substring(3, 5));

@@ -14,7 +14,7 @@ public abstract class Osoba {
     }
     public abstract int numeroloskiBroj();
     public abstract String metabolizam(final Datum d);
-    int zbir(int br){
+    int zbirBrojeva(int br){
         int zb = 0;
         while (br != 0){
             zb += br % 10;
