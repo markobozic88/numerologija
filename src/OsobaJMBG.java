@@ -22,7 +22,7 @@ public class OsobaJMBG extends Osoba {
         int dan = Integer.parseInt(jmbg.substring(0,2));
         int mesec = Integer.parseInt(jmbg.substring(2,4));
         int godina = Integer.parseInt(jmbg.substring(4,7)) + 1000;
-        if (Datum.ispravanDatum(dan, mesec, godina)){
+        if (!Datum.ispravanDatum(dan, mesec, godina)){
             System.out.println("Neispravno unet JMBG - dan, mesec ili godina u JMBG-u neispravno uneto");
             return false;
         }
@@ -32,7 +32,7 @@ public class OsobaJMBG extends Osoba {
     public int numeroloskiBroj() {
         int zbir = 0;
         for (int i = 0; i < 7; i++){
-            zbir += jmbg.charAt(i) - '0';
+            zbir += getJmbg().charAt(i) - '0';
         }
         zbir += 1; //zbog toga sto nemamo 1 na pocetku kod godine u jmbg-u
         while (zbir > 9){
@@ -42,19 +42,22 @@ public class OsobaJMBG extends Osoba {
     }
     @Override
     public String metabolizam(Datum d) {
-        return null;
+        String jmbgString = getJmbg().substring(0,4) + 1 + getJmbg().substring(4,7);
+        int dDanasni = d.getDan() * 1000000 + d.getMesec() * 10000 + d.getGodina();
+        String rezultat = String.valueOf(Integer.parseInt(jmbgString) + dDanasni);
+        if (rezultat.length() == 7){
+            rezultat = "0" + rezultat;
+        }
+        return rezultat;
     }
-
     public String getJmbg() {
         return jmbg;
     }
-
     public void setJmbg(String jmbg) {
         this.jmbg = jmbg;
     }
-
     @Override
     public String toString() {
-        return super.toString() + "JMBG: " + getJmbg() + "\n";
+        return super.toString() + "JMBG: " + getJmbg() + "\nNumeroloski broj: " + numeroloskiBroj();
     }
 }

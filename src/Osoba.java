@@ -42,6 +42,6 @@ public abstract class Osoba {
     }
     @Override
     public String toString() {
-        return "Osoba:\nIme: " + getIme() + "\nPrezime: " + getPrezime() + "\nAdresa: " + getAdresaStanovanja() + "\n";
+        return "Ime: " + getIme() + "\nPrezime: " + getPrezime() + "\nAdresa: " + getAdresaStanovanja() + "\n";
     }
 }
